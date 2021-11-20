@@ -12,6 +12,9 @@ def simulation(weekday):
     faculties = utility.generate_faculty(weekday)
     people_random = utility.generate_people_random(weekday)
 
+    # combine and plot arrivals
+
+    
     # initialize elevators
     
 

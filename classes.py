@@ -1,10 +1,12 @@
 import constants
 
 class People:
-    def __init__(self, objective, floor, arrival_time) -> None:
+    def __init__(self, objective, floor, arrival_time, leave_time) -> None:
         self.objective = objective
         self.floor = floor
+        # 0: 8:00, 60: 9:00, ....
         self.arrival_time = arrival_time
+        self.leave_time = leave_time
     
     def press_button(self, floor, elevator):
         elevator.respond_button(floor)
