@@ -1,7 +1,9 @@
 import numpy as np
 import constants
 import class_schedule
+import OH_schedule
 import classes
+import faculty_floors
 
 def convert_time(time_str):
     hour, min = time_str.split(":")
@@ -35,4 +37,24 @@ def generate_student_class(weekday):
 
     return people_list
 
-print(generate_student_class(0)[0])
+def generate_student_OH(weekday):
+    return []
+
+
+def generate_faculty():
+    people_list = []
+
+    for floor in range(constants.NUM_FLOORS):
+        num_faculty = faculty_floors.floor_to_count[floor]
+        start_time = convert_time(constants.FACULTY_WORK_START)
+        end_time = convert_time(constants.FACULTY_WORK_END)
+
+        arrival_times = generate_normal_distribution(mean=start_time, count=num_faculty)
+        leave_times = generate_normal_distribution(mean=end_time, count=num_faculty)
+
+        for i in range(num_faculty):
+            new_person = classes.People(objective=constants.OBJECTIVE_DICT["faculty"], 
+                            floor=floor, arrival_time=arrival_times[i], leave_time=leave_times[i])
+            people_list.append(new_person)
+
+    return people_list

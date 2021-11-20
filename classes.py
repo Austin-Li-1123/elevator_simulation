@@ -11,6 +11,8 @@ class People:
     def press_button(self, floor, elevator):
         elevator.respond_button(floor)
 
+    def __str__(self) -> str:
+        return f"arrive at {self.arrival_time}, leave at {self.leave_time}, floor {self.floor}"
 
 
 class Elevator:

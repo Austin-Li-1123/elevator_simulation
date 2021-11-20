@@ -9,12 +9,12 @@ def simulation(weekday):
     # the var below have type: list(People)
     student_class = utility.generate_student_class(weekday)
     student_OH = utility.generate_student_OH(weekday)
-    faculties = utility.generate_faculty(weekday)
-    people_random = utility.generate_people_random(weekday)
+    faculties = utility.generate_faculty()
+    # people_random = utility.generate_people_random(weekday)
 
     # combine and plot arrivals
+    print(len(student_class), len(student_OH), len(faculties))
 
-    
     # initialize elevators
     
 
