@@ -58,3 +58,18 @@ def generate_faculty():
             people_list.append(new_person)
 
     return people_list
+
+'''
+
+'''
+def generate_people_random():
+    people_list = []
+
+    people_per_minute = constants.RANDOM_PEOPLE_PER_MIN
+    output = np.random.poisson(people_per_minute, constants.SIMULATE_TIME)
+    
+    
+    
+
+    return people_list
+
