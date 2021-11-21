@@ -6,6 +6,6 @@ def visualize_people(people_list):
     floors = [people.floor for people in people_list]
 
     plt.scatter(arrival_times, floors)
-    plt.scatter(leave_times, floors)
+    # plt.scatter(leave_times, floors)
     plt.show()
     

@@ -59,17 +59,44 @@ def generate_faculty():
 
     return people_list
 
-'''
+def get_random_floor():
+    random_float = np.random.random()
+    if random_float <= 0.075:
+        return 0
+    if random_float <= 0.2:
+        return 1
+    if random_float <= 0.415:
+        return 2
+    if random_float <= 0.515:
+        return 3
+    if random_float <= 0.765:
+        return 4
+    if random_float <= 0.965:
+        return 5
+    if random_float <= 0.99:
+        return 6
+    return 7
 
-'''
+
 def generate_people_random():
     people_list = []
 
     people_per_minute = constants.RANDOM_PEOPLE_PER_MIN
     output = np.random.poisson(people_per_minute, constants.SIMULATE_TIME)
     
-    
+    for i, num in enumerate(output):
+        for j in range(num):
+            floor = get_random_floor()
+            leave_time = i + np.random.normal(constants.AVERAGE_STAY, 1)
+            new_person = classes.People(objective=constants.OBJECTIVE_DICT["others"], 
+                            floor=floor, arrival_time=i, leave_time=leave_time)
+            people_list.append(new_person)
     
 
     return people_list
 
+def initialize_elevators(count):
+    elevators = []
+
+    for i in range(count):
+        elevators.append(classes.Elevator())

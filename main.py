@@ -15,11 +15,14 @@ def simulation(weekday):
 
     # combine and plot arrivals
     print(f"{len(student_class)+len(student_OH)+len(faculties)+len(people_random)} people in the system")
-    all_people = student_class + student_OH + faculties
-    #visualization.visualize_people(people_list=all_people)
+    all_people = student_class + student_OH + faculties + people_random
+#    visualization.visualize_people(people_list=all_people)
+
+    # sort all people by arrival time
+    all_people_sorted = all_people.sort(key=lambda x: x.arrival_time)
 
     # initialize elevators
-    
+    all_elevators = utility.initialize_elevators(count=constants.NUM_ELEVATORS)
 
 
 
