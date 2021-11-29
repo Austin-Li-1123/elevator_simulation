@@ -22,23 +22,42 @@ def generate_student_class(weekday):
     if weekday == 0:
         # [(start, end, count, floor)]
         schedule = class_schedule.MONDAY_CLASS
-        for class_ in schedule:
-            start_time = convert_time(class_[0])
-            end_time = convert_time(class_[1])
-            num_student = class_[2]
-            arrival_times = generate_normal_distribution(mean=start_time, count=num_student)
-            leave_times = generate_normal_distribution(mean=end_time, count=num_student)
 
-            # initalize student objects
-            for i in range(num_student):
-                new_person = classes.People(objective=constants.OBJECTIVE_DICT["class"], 
-                            floor=class_[3], arrival_time=arrival_times[i], leave_time=leave_times[i])
-                people_list.append(new_person)
+    for class_ in schedule:
+        start_time = convert_time(class_[0])
+        end_time = convert_time(class_[1])
+        num_student = class_[2]
+        arrival_times = generate_normal_distribution(mean=start_time, count=num_student)
+        leave_times = generate_normal_distribution(mean=end_time, count=num_student)
+
+        # initalize student objects
+        for i in range(num_student):
+            new_person = classes.People(objective=constants.OBJECTIVE_DICT["class"], 
+                        floor=class_[3], arrival_time=arrival_times[i], leave_time=leave_times[i])
+            people_list.append(new_person)
 
     return people_list
 
 def generate_student_OH(weekday):
-    return []
+    people_list = []
+    if weekday == 0:
+        # [(start, end, average, floor)]
+        schedule = OH_schedule.MONDAY_OH
+
+    for time_ in schedule:
+        start_time = convert_time(time_[0])
+        end_time = convert_time(time_[1])
+        num_student = time_[2]
+        arrival_times = generate_normal_distribution(mean=start_time, count=num_student)
+        leave_times = generate_normal_distribution(mean=end_time, count=num_student)
+
+        # initalize student objects
+        for i in range(num_student):
+            new_person = classes.People(objective=constants.OBJECTIVE_DICT["OH"], 
+                        floor=2, arrival_time=arrival_times[i], leave_time=leave_times[i])
+            people_list.append(new_person)
+
+    return people_list
 
 
 def generate_faculty():

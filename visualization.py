@@ -12,7 +12,8 @@ def visualize_people(people_list):
     
 
 def plot_starvation(starvation):
-    y_val = np.array(starvation.values()) / sum(starvation.values())
+    y_val = np.array(list(starvation.values())) / sum(starvation.values())
+
     plt.bar(starvation.keys(), y_val)
     plt.xlabel("Wait time(sec)")
     plt.ylabel("Frequency")
