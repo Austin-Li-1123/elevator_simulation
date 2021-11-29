@@ -100,3 +100,22 @@ def initialize_elevators(count):
 
     for i in range(count):
         elevators.append(classes.Elevator())
+
+    return elevators
+
+# the order of the targets is also priority
+def set_elevator_direction(elevator_obj):
+    if elevator_obj.target_floors[0] > elevator_obj.curr_floor:
+        # move upward
+        elevator_obj.up_direction = True
+    else:
+        elevator_obj.up_direction = False
+
+
+def find_least_tasked_e(all_elevators):
+    min_elevator = 0
+    for i, e in enumerate(all_elevators):
+        if len(e.target_floors) < len(all_elevators[min_elevator].target_floors):
+            min_elevator = i
+
+    return min_elevator

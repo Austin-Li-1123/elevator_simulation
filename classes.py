@@ -7,6 +7,7 @@ class People:
         # 0: 8:00, 60: 9:00, ....
         self.arrival_time = arrival_time
         self.leave_time = leave_time
+        
     
     def press_button(self, floor, elevator):
         elevator.respond_button(floor)
@@ -17,11 +18,19 @@ class People:
 
 class Elevator:
     def __init__(self) -> None:
-        self.pressed_buttons = []
+        self.target_floors = []
         self.curr_floor = 1
         self.curr_load = 0
         self.capacity = constants.ELEVATOR_CAPACITY
-        self.is_moving = False
+        self.up_direction = None
+        self.is_door_open = False
 
     def respond_button(self, floor):
         self.pressed_buttons.append(floor)
+
+class Request:
+    def __init__(self, from_, to, start_time) -> None:
+        # from: floor, to: [floor]
+        self.from_ = from_
+        self.to = to
+        self.start_time = start_time

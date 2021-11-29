@@ -1,6 +1,6 @@
 # simulation details
 # all time units are in minutes
-ITERATIONS = 1
+ITERATIONS = 2
 SIMULATE_HOURS = 18 - 8
 SIMULATE_TIME = SIMULATE_HOURS * 60
 
@@ -25,3 +25,4 @@ FACULTY_WORK_END = "16:00"
 # assumptions
 RANDOM_PEOPLE_PER_MIN = 0.5
 AVERAGE_STAY = 1.5
+MEAN_STUDENT_PRE_OH = 8
